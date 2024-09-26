@@ -1,4 +1,8 @@
 # charlie
 ITP 460 Group Website
+
 Cynthia Chen | chencynt@usc.edu
-hellllo
+
+
+Christina Doolan | cdoolan@usc.edu
+Mateo Llenderrozos | mllender@usc.edu
