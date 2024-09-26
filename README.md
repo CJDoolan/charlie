@@ -1,3 +1,3 @@
 # charlie
 ITP 460 Group Website
-Ben Tran bjtran@usc.edu
+Ben Tran | bjtran@usc.edu
