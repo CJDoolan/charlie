@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer with PDF.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .pdf-container {
+            width: 80%;
+            height: 80vh;
+            border: 1px solid #ccc;
+            overflow: auto;
+            background-color: #fff;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+        .note-section {
+            margin-top: 20px;
+            width: 80%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>PDF Viewer</h1>
+    <div class="pdf-container" id="pdfViewer"></div>
+    <div class="note-section">
+        <button onclick="addManualNote()">Add Note</button>
+        <div id="notesList"></div>
+    </div>
+
+    <script>
+        const url = 'charlie/examplePDF.pdf'; // Path to your PDF file
+
+        let pdfDoc = null,
+            pageNum = 1,
+            scale = 1.5,
+            canvas = document.createElement('canvas'),
+            ctx = canvas.getContext('2d');
+
+        document.getElementById('pdfViewer').appendChild(canvas);
+
+        // Load the PDF
+        pdfjsLib.getDocument(url).promise.then(pdf => {
+            pdfDoc = pdf;
+            renderPage(pageNum);
+        }).catch(error => {
+            console.error('Error loading PDF: ', error);
+            alert('Could not load the PDF. Please check the file path and try again.');
+        });
+
+        // Render a specific page of the PDF
+        function renderPage(num) {
+            pdfDoc.getPage(num).then(page => {
+                const viewport = page.getViewport({ scale: scale });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                const renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport
+                };
+                page.render(renderContext);
+            }).catch(error => {
+                console.error('Error rendering page: ', error);
+                alert('Error rendering the PDF page. Please try again.');
+            });
+        }
+
+        // Function to manually add a note
+        function addManualNote() {
+            const note = prompt('Enter your note:');
+            if (note) {
+                const notesList = document.getElementById('notesList');
+                const noteElement = document.createElement('div');
+                noteElement.classList.add('manual-note');
+                noteElement.innerHTML = `<strong>Note:</strong> ${note}`;
+                notesList.appendChild(noteElement);
+            }
+        }
+    </script>
+
+</body>
+</html>
