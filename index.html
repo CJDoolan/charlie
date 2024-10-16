@@ -1,97 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Viewer with PDF.js</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+    <title>Home Page</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .pdf-container {
-            width: 80%;
-            height: 80vh;
-            border: 1px solid #ccc;
-            overflow: auto;
-            background-color: #fff;
-        }
-        canvas {
-            display: block;
-            margin: 0 auto;
-        }
-        .note-section {
-            margin-top: 20px;
-            width: 80%;
-            text-align: center;
-        }
+        body{background: #FFF;width: 1440px;
+            height: 1024px;
+            margin:0 auto;
+            }
+
+        .black-text{color: var(--Black, #252E2C);font-family: "General Sans";font-size: 30px;font-style: normal;font-weight: 600;line-height: normal;}
+
+        .green-text{color: var(--Bold-Mint, #47837A);
+                    font-family: "General Sans";
+                    font-size: 30px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;}
+
+        #slogan{width: 493px;color: var(--Black, #252E2C);
+                font-family: "General Sans";
+                font-size: 35px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                margin-left: 100px;}
+
+        .signup-btn{display: flex;
+                    width: 200px;
+                    height: 50px;
+                    padding: 5px 25px;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    flex-shrink: 0;border-radius: 26px;
+                    border: 2px solid var(--Bold-Mint, #47837A);
+                    background: var(--Bold-Mint, #47837A);
+                    box-shadow: 3px 5px 4px 0px #47837A;
+                    margin-top:100px;
+                    margin-bottom:20px;
+                    margin-left: 100px;
+                    color:#FFF;
+                    font-family: "General Sans";}
+        
+        .login-btn{display: flex;
+                    width: 200px;
+                    height: 50px;
+                    padding: 5px 25px;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    flex-shrink: 0;border-radius: 26px;
+                    border: 2px solid var(--Bold-Mint, #47837A);
+                    box-shadow: 3px 4px 6px 0px #6D7170;
+                    color:#47837A;
+                    font-family: "General Sans";
+                    margin-left: 100px;}
+        
+        .mascot{width: 350px;
+height: 400px; float: right;
+margin-top: -150px;
+margin-right: 300px;
+}
+
+  
     </style>
 </head>
-<body>
 
-    <h1>PDF Viewer</h1>
-    <div class="pdf-container" id="pdfViewer"></div>
-    <div class="note-section">
-        <button onclick="addManualNote()">Add Note</button>
-        <div id="notesList"></div>
+<body>
+    
+    <div class="header">
+        <span class="black-text">Book</span><span class="green-text">worm</span>
+    </div>
+    
+    
+    <div id="slogan">
+        <p>Make reading simple,  and learning endless!</p>
     </div>
 
-    <script>
-        const url = 'charlie/examplePDF.pdf'; // Path to your PDF file
+    <img src="furfur.png" alt="furfur" class="mascot">
+    <div class="signup-btn" onclick="window.location.href='signup.html'">Sign Up</div>
 
-        let pdfDoc = null,
-            pageNum = 1,
-            scale = 1.5,
-            canvas = document.createElement('canvas'),
-            ctx = canvas.getContext('2d');
-
-        document.getElementById('pdfViewer').appendChild(canvas);
-
-        // Load the PDF
-        pdfjsLib.getDocument(url).promise.then(pdf => {
-            pdfDoc = pdf;
-            renderPage(pageNum);
-        }).catch(error => {
-            console.error('Error loading PDF: ', error);
-            alert('Could not load the PDF. Please check the file path and try again.');
-        });
-
-        // Render a specific page of the PDF
-        function renderPage(num) {
-            pdfDoc.getPage(num).then(page => {
-                const viewport = page.getViewport({ scale: scale });
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-
-                const renderContext = {
-                    canvasContext: ctx,
-                    viewport: viewport
-                };
-                page.render(renderContext);
-            }).catch(error => {
-                console.error('Error rendering page: ', error);
-                alert('Error rendering the PDF page. Please try again.');
-            });
-        }
-
-        // Function to manually add a note
-        function addManualNote() {
-            const note = prompt('Enter your note:');
-            if (note) {
-                const notesList = document.getElementById('notesList');
-                const noteElement = document.createElement('div');
-                noteElement.classList.add('manual-note');
-                noteElement.innerHTML = `<strong>Note:</strong> ${note}`;
-                notesList.appendChild(noteElement);
-            }
-        }
-    </script>
-
+    <div class="login-btn" onclick="window.location.href='login.html'">Login</div>
+    
 </body>
 </html>
