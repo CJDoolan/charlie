@@ -1,0 +1,244 @@
+@font-face {
+    font-family: 'GeneralSans';
+    src: url('fonts/GeneralSans-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GeneralSans';
+    src: url('fonts/GeneralSans-BoldItalic.otf') format('opentype');
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'GeneralSans';
+    src: url('fonts/GeneralSans-Extralight.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GeneralSans';
+    src: url('fonts/GeneralSans-ExtralightItalic.otf') format('opentype');
+    font-weight: 200;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'GeneralSans';
+    src: url('fonts/GeneralSans-Italic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'GeneralSans';
+    src: url('fonts/GeneralSans-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GeneralSans';
+    src: url('fonts/GeneralSans-LightItalic.otf') format('opentype');
+    font-weight: 300;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'GeneralSans';
+    src: url('fonts/GeneralSans-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GeneralSans';
+    src: url('fonts/GeneralSans-MediumItalic.otf') format('opentype');
+    font-weight: 500;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'GeneralSans';
+    src: url('fonts/GeneralSans-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GeneralSans';
+    src: url('fonts/GeneralSans-Semibold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+
+body {
+    font-family: 'GeneralSans';
+    padding: 0;
+    margin: 0;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 20px -12px #47837A;
+}
+.navbar-left .navbar-brand {
+    font-size: 35px;
+    color: #252E2C;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 22px;
+}
+.brand-color-shift {
+    color: #47837A;
+}
+.navbar-left .nav-link {
+    margin-left: 6px;
+    color: #252E2C;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 3px 20px;
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 1000000px;
+    transition: 0.2s;
+}
+.nav-link:hover {
+    border-color: #252E2C;
+}
+.nav-link svg {
+    overflow: visible;
+}
+.navbar-right .coins {
+    margin-right: 30px;
+    font-weight: 500;
+    font-size: 24px;
+    color: #252E2C;
+}
+.coins svg {
+    overflow: visible;
+}
+.navbar-right .shop-btn {
+    padding: 3px 20px;
+    color: #47837A;
+    font-size: 24px;
+    border-color: #47837A;
+    border-width: 2px;
+    border-style: solid;
+    text-decoration: none;
+    border-radius: 1000000px;
+    transition: 0.2s;
+}
+.shop-btn:hover {
+    background-color: #47837A;
+    color: white;
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: 6fr 7fr;
+    gap: 40px;
+    margin-left: 12%;
+    margin-right: 12%;
+}
+
+
+.left-side {
+    text-align: center;
+}
+
+.welcome-text {
+    font-size: 35px;
+    font-weight: 600;
+    color: #2b6777;
+    margin-bottom: 20px;
+}
+
+.mascot-container {
+    background-color: #f0f8ff;
+    border-radius: 10px;
+}
+
+.mascot-img {
+    max-width: 100%;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.new-reading {
+    background-color: white;
+    padding: 20px;
+    border: 2px dashed #1a936f;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.upload-icon {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.browse-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: 1px solid #1a936f;
+    color: #1a936f;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.browse-btn:hover {
+    background-color: #1a936f;
+    color: white;
+}
+
+.jump-back-in {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.book-card {
+    text-align: center;
+}
+
+.book-thumbnail {
+    width: 150px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.book-card p {
+    margin: 10px 0;
+    color: #2b6777;
+}
+
+.read-btn {
+    padding: 10px 20px;
+    background-color: white;
+    border: 1px solid #1a936f;
+    color: #1a936f;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.read-btn:hover {
+    background-color: #1a936f;
+    color: white;
+}
