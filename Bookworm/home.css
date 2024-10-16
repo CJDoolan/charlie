@@ -71,6 +71,9 @@ body {
     padding: 0;
     margin: 0;
 }
+a {
+    text-decoration: none;
+}
 
 
 .navbar {
@@ -120,125 +123,116 @@ body {
 .coins svg {
     overflow: visible;
 }
-.navbar-right .shop-btn {
+.home-btn {
     padding: 3px 20px;
     color: #47837A;
-    font-size: 24px;
+    background-color: white;
+    font-size: 21px;
+    font-weight: 500;
     border-color: #47837A;
     border-width: 2px;
     border-style: solid;
     text-decoration: none;
     border-radius: 1000000px;
     transition: 0.2s;
+    cursor: pointer;
 }
-.shop-btn:hover {
+.home-btn:hover {
     background-color: #47837A;
     color: white;
 }
 
 
+
 .container {
     display: grid;
     grid-template-columns: 6fr 7fr;
-    gap: 40px;
-    margin-left: 12%;
-    margin-right: 12%;
+    gap: 120px;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 
 .left-side {
     text-align: center;
 }
-
-.welcome-text {
+.body_title {
     font-size: 35px;
     font-weight: 600;
-    color: #2b6777;
+    color: #252E2C;
     margin-bottom: 20px;
 }
-
 .mascot-container {
-    background-color: #f0f8ff;
-    border-radius: 10px;
+    /* background-color: #EAFFFC;
+    height: 75%; */
+    border-radius: 20px;
+    background-color: #F5F8F5;
+    margin: 0 30px;
+    border: 2px solid #E9E9E9;
+    box-shadow: 0 2px 20px -12px #B9B9B9, 0 2px 0 0 #D9D9D9;
+}
+.mascot-container img {
+    width: 100%;
+    border-radius: 20px;
 }
 
-.mascot-img {
-    max-width: 100%;
-}
 
 .right-side {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 }
-
 .new-reading {
     background-color: white;
     padding: 20px;
-    border: 2px dashed #1a936f;
-    border-radius: 10px;
+    border: 2px solid #E9E9E9;
+    border-radius: 20px;
+    box-shadow: 0 2px 20px -12px #B9B9B9, 0 2px 0 0 #D9D9D9;
     text-align: center;
-}
-
-.upload-area {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10px;
 }
-
+.new-reading p {
+    font-size: 18px;
+    color: #000000;
+}
+.new-reading svg {
+    overflow: visible;
+}
 .upload-icon {
     width: 50px;
     margin-bottom: 10px;
 }
-
-.browse-btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #ffffff;
-    border: 1px solid #1a936f;
-    color: #1a936f;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.browse-btn:hover {
-    background-color: #1a936f;
-    color: white;
+.new-reading .home-btn {
+    padding: 3px 60px;
 }
 
 .jump-back-in {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
 }
-
 .book-card {
     text-align: center;
+    background-color: #EAFFFC;
+    border: 2px solid #E9E9E9;
+    border-radius: 20px;
+    box-shadow: 0 2px 20px -12px #B9B9B9, 0 2px 0 0 #D9D9D9;
+    padding: 16px 30px;
 }
-
 .book-thumbnail {
-    width: 150px;
-    height: 200px;
+    height: 160px;
+    width: auto;
     display: block;
     margin: 0 auto;
 }
-
 .book-card p {
-    margin: 10px 0;
+    margin: 12px 0;
     color: #2b6777;
+    font-style: italic;
+    font-size: 18px;
 }
-
-.read-btn {
-    padding: 10px 20px;
-    background-color: white;
-    border: 1px solid #1a936f;
-    color: #1a936f;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.read-btn:hover {
-    background-color: #1a936f;
-    color: white;
+.book-card .home-btn {
+    padding: 3px 40px;
 }
