@@ -6,5 +6,5 @@ Mateo Llenderrozos | mllender@usc.edu
 Ben Tran | bjtran@usc.edu
 Cynthia Chen | chencyntt@usc.edu
 James Dong | dongjame@usc.edu
-
+Sophia Chung | chungsop@usc.edu
 
