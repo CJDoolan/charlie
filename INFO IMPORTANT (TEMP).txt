@@ -1,0 +1,12 @@
+backend file will contain all of the html files in the templates folder and the python backend when that gets developed
+
+frontend file will contain all the react apps (still working on this)
+
+index.html will be moved to templates later. For now it can stay in the root directory since it lets us see the website from GitHub.
+
+TODO:
+Add backend python files
+Organize css and javascript files into static folder
+Finish react apps
+	Convert booklog and start reading page to react (since they both use pdf display)
+	Bundle react apps and move them to static folder

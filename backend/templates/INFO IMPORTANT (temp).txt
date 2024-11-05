@@ -1,0 +1,1 @@
+Most of the files in here will be temporary. Some of them should be transferred to static or converted to react later.
