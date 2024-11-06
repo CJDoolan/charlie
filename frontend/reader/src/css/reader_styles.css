@@ -3,7 +3,7 @@ container splits items down the middle into columns
 */
 .container {
     display: grid;
-    grid-template-columns: 5fr 2fr;
+    grid-template-columns: 1fr 1fr;
     gap: 120px;
     margin-left: 15%;
     margin-right: 15%;
@@ -12,30 +12,46 @@ container splits items down the middle into columns
 /* Left side:
 Contains pdf display
 */
-/*
-TODO: Make the pdf clickable through with buttons on the top
-*/
 .left-side {
     text-align: center;
+    margin: 0 auto;
 }
-.body_title {
-    font-size: 35px;
-    font-weight: 600;
+.page-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+.page-num-display {
+    font-size: 18px;
+    font-weight: normal;
     color: #252E2C;
-    margin-bottom: 20px;
 }
-.mascot-container {
-    /* background-color: #EAFFFC;
-    height: 75%; */
-    border-radius: 20px;
-    background-color: #F5F8F5;
-    margin: 0 30px;
-    border: 2px solid #E9E9E9;
-    box-shadow: 0 2px 20px -12px #B9B9B9, 0 2px 0 0 #D9D9D9;
+.page-control {
+    background: none;
+    border-width: 0;
+    cursor: pointer;
 }
-.mascot-container img {
-    width: 100%;
-    border-radius: 20px;
+.page-control:disabled {
+    cursor: default;
+}
+.page-control:disabled svg {
+    stroke: #ccc;
+}
+.pdf-display {
+    margin: 0 auto;
+    overflow-y: scroll;
+    height: 80vh;
+}
+.pdf-display::-webkit-scrollbar {
+    width: 5px;
+}
+.pdf-display::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.pdf-display::-webkit-scrollbar-thumb {
+    background: #888;
+}
+.pdf-display::-webkit-scrollbar-thumb:hover {
+    background: #e0e0e0;
 }
 
 /* Right side:
@@ -51,62 +67,131 @@ Jump back in:
     Add backend to show the 2 recent books the user has read (idk how)
         Change image to pdf for the recent books
 */
-.right-side {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-.new-reading {
-    background-color: white;
-    padding: 20px;
-    border: 2px solid #E9E9E9;
-    border-radius: 20px;
-    box-shadow: 0 2px 20px -12px #B9B9B9, 0 2px 0 0 #D9D9D9;
+.timer-div {
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-bottom: 5vh;
 }
-.new-reading p {
-    font-size: 18px;
-    color: #000000;
-}
-.new-reading svg {
-    overflow: visible;
-}
-.upload-icon {
-    width: 50px;
+.time-display {
+    font-size: 35px;
+    font-weight: 600;
+    color: #252E2C;
     margin-bottom: 10px;
 }
-.new-reading .home-btn {
-    padding: 3px 60px;
+.progress-bar-container {
+    width: 100%;
+    height: 30px;
+    background-color: #e0e0e0;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 10px;
+    box-shadow: 0 8px 20px -12px #828282;
+}
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(45deg, #FFCC4D, #ff9800);
+    transition: width 1s linear;
 }
 
-.jump-back-in {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
+.notes-div h3 {
+    font-size: 35px;
+    font-weight: 600;
+    color: #252E2C;
+    margin-bottom: 5px;
 }
-.book-card {
-    text-align: center;
-    background-color: #EAFFFC;
-    border: 2px solid #E9E9E9;
-    border-radius: 20px;
-    box-shadow: 0 2px 20px -12px #B9B9B9, 0 2px 0 0 #D9D9D9;
-    padding: 16px 30px;
+.note-input {
+    width: 100%;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    resize: none;
+    box-shadow: 0 8px 40px -20px #919191;
 }
-.book-thumbnail {
-    height: 160px;
-    width: auto;
-    display: block;
-    margin: 0 auto;
+.note-input::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 2px;
 }
-.book-card p {
-    margin: 12px 0;
-    color: #2b6777;
-    font-style: italic;
+.note-input::-webkit-scrollbar-track {
+    background: none;
+    border-radius: 2px;
+}
+.note-input::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 2px;
+}
+.note-btn {
+    padding: 3px 30px;
+    color: #47837A;
+    background-color: white;
     font-size: 18px;
+    font-weight: 500;
+    border-color: #47837A;
+    border-width: 1.5px;
+    border-style: solid;
+    text-decoration: none;
+    border-radius: 1000000px;
+    transition: 0.2s;
+    cursor: pointer;
+    margin-bottom: 15px;
 }
-.book-card .home-btn {
-    padding: 3px 40px;
+.note-btn:hover {
+    background-color: #47837A;
+    color: white;
+}
+.note {
+    position: relative;
+    width: 100%;
+    border: 2.5px solid #e9e9e9;
+    font-size: 18px;
+    padding: 10px;
+    margin-bottom: 10px; 
+    margin-top: 10px;
+    cursor: text;
+    width: 100%;
+    box-sizing: border-box; 
+    background-color: white;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    border-radius: 5px;
+    transition: 0.3s;
+    box-shadow: 0 8px 40px -20px #919191;
+}
+.note:hover {
+    border-color: #252E2C;
+}
+.note textarea {
+    background: none;
+    border-width: 0;
+    font-family: inherit;
+    font-size: 18px;
+    width: 100%;
+    height: 100%;
+    resize: none;
+}
+.note textarea:focus {
+    background: none;
+    outline: none;
+}
+.note textarea::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 2px;
+}
+.note textarea::-webkit-scrollbar-track {
+    background: none;
+    border-radius: 2px;
+}
+.note textarea::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 2px;
+}
+.delete-note {
+    position: absolute;
+    top: 0px;
+    right: -33px;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
