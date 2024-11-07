@@ -20,15 +20,20 @@ Contains pdf display
     display: flex;
     justify-content: space-around;
 }
-.page-num-display {
-    font-size: 18px;
-    font-weight: normal;
+.page-buttons h3 {
+    font-size: 27px;
+    font-weight: 600;
     color: #252E2C;
+    margin-bottom: 0;
+}
+.page-buttons svg {
+    overflow: visible;
 }
 .page-control {
     background: none;
     border-width: 0;
     cursor: pointer;
+    margin-bottom: 0;
 }
 .page-control:disabled {
     cursor: default;
@@ -55,17 +60,15 @@ Contains pdf display
 }
 
 /* Right side:
-New reading:
-    Users can upload new books to read
-    After book is uploaded lets user go to the start reading page
-Jump back in:
-    Displays first page of the pdfs of the books the user has last read
-    Lets user go to start reading with button
+Timer:
+    Changes based on totalTime variable (in seconds)
+Notes:
+    Lets user create/update/delete notes
+    Notes are stored in object and displayed per-page of the pdf
 */
 /* TODO: 
-    add backend slop to file upload
-    Add backend to show the 2 recent books the user has read (idk how)
-        Change image to pdf for the recent books
+    Store notes in the backend
+    Have time variable update based on time selected in pre-reading screen
 */
 .timer-div {
     text-align: center;
@@ -121,8 +124,8 @@ Jump back in:
     background: black;
     border-radius: 2px;
 }
-.note-btn {
-    padding: 3px 30px;
+.page-btn {
+    padding: 3px 20px;
     color: #47837A;
     background-color: white;
     font-size: 18px;
@@ -136,7 +139,7 @@ Jump back in:
     cursor: pointer;
     margin-bottom: 15px;
 }
-.note-btn:hover {
+.page-btn:hover {
     background-color: #47837A;
     color: white;
 }
@@ -194,4 +197,52 @@ Jump back in:
     background: none;
     border: none;
     cursor: pointer;
+}
+
+#screen-cover {
+    position: absolute;
+    z-index: 1000!important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.screen-cover-fade {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #696969;
+    opacity: 0.7;
+}
+.end-container {
+    position: absolute;   
+    top: 50%;   
+    left: 50%;  
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    border: 2px solid #E9E9E9;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+}
+.end-text-div h3 {
+    font-size: 27px;
+    font-weight: 600;
+    color: #252E2C;
+    margin-bottom: 0;
+}
+.end-text-div p {
+    text-align: left;
+    word-wrap: break-word;
+    white-space: normal;
+    margin-bottom: -20px;
+    font-size: 21px;
+}
+.end-text-div span {
+    color: #47837A;
+}
+.end-text-div svg {
+    overflow: visible;
 }
