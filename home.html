@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<head>
+    <title>Home Page</title>
+    <style>
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "General Sans", sans-serif;
+    background-color: #ffffff;
+}
+
+.container {
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+.brand {
+    color: #3e7469;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 4em;
+    color: #000000;
+    font-weight: 600;
+}
+
+.tagline {
+    font-size: 2em;
+    color: #333333;
+    margin: 20px 0;
+    padding-bottom: 50px;
+}
+
+.btn {
+    width: 200px;
+    padding: 20px;
+    margin: 10px 0;
+    font-size: 1.2em;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.signup {
+    background-color: #3e7469;
+    color: #ffffff;
+    border: none;
+}
+.signup:hover{
+    scale: 110%;
+    transition-duration: 100ms;
+}
+.login {
+    background-color: #ffffff;
+    color: #3e7469;
+    border: 2px solid #3e7469;
+}
+.login:hover{
+    scale: 110%;
+    transition-duration: 100ms;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Book<span class="brand">worm</span></h1>
+        <p class="tagline">Make reading simple,<br> and learning endless!</p>
+        <button onclick="window.location.href='Bookworm/signup.html'" class="btn signup">Sign Up</button>
+    </br>
+        <button onclick="window.location.href='Bookworm/login.html'" class="btn login">Login</button>
+    </div>
+</body>
+
+</html>
