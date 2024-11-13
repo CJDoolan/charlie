@@ -1,4 +1,4 @@
-import './css/home_styles.css';
+import './css/startread_styles.css';
 import './css/AnnotationLayer.css'
 import './css/TextLayer.css'
 import React, { useState } from 'react';
@@ -6,27 +6,13 @@ import { Document, Page, pdfjs } from "react-pdf";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.min.mjs`;
 
-export default function Home() {
+export default function Startread() {
     return (
         <div class="container">
             <Mascot />
             <div class="right-side">
                 <Upload />
-                <div>
-                    <h3 class="body_title">Jump back in</h3>
-                    <div class="jump-back-in">
-                        <Bookpreview
-                            pdf="example.pdf"
-                            bookname="Molecular Biology Techniques, 4th ed."
-                            link="#"  // def change this later because the link will not be used and routing between home and start screen will be done through backend
-                        />
-                        <Bookpreview 
-                            pdf="example.pdf"
-                            bookname="Molecular Biology Techniques, 4th ed."
-                            link="#"
-                        />
-                    </div>
-                </div>
+                <Jumpbackin />
             </div>
         </div>
     );
@@ -140,7 +126,7 @@ function Upload() {
     );
 }
 
-function Bookpreview(props) {
+function Jumpbackin() {
     function onLoadError(error) {
         console.log("Error loading PDF: ", error);
     }
@@ -150,23 +136,46 @@ function Bookpreview(props) {
     }
 
     return (
-        <div class="book-card">
-            <div class="pdf-thumbnail-holder">
-                <Document
-                file={`${process.env.PUBLIC_URL}/imgtemp/${props.pdf}`}
-                    onLoadError={onLoadError}
-                    onSourceError={onSourceError}
-                >
-                    <Page 
-                        pageNumber={1}
-                        width={140}
-                    />
-                </Document>
+        <div>
+            <h3 class="body_title">Jump back in</h3>
+            <div class="jump-back-in">
+                <div class="book-card">
+                    <div class="pdf-thumbnail-holder">
+                        <Document
+                            file={`${process.env.PUBLIC_URL}/imgtemp/example.pdf`}
+                            onLoadError={onLoadError}
+                            onSourceError={onSourceError}
+                        >
+                            <Page 
+                                pageNumber={1}
+                                width={140}
+                            />
+                        </Document>
+                    </div>
+                    <p>Molecular Biology Techniques, 4th ed.</p>
+                    <a href="#">
+                        <button class="home-btn">Read</button>
+                    </a>
+                </div>
+                <div class="book-card">
+                    <div class="pdf-thumbnail-holder">
+                        <Document
+                            file={`${process.env.PUBLIC_URL}/imgtemp/example.pdf`}
+                            onLoadError={onLoadError}
+                            onSourceError={onSourceError}
+                        >
+                            <Page 
+                                pageNumber={1}
+                                width={140}
+                            />
+                        </Document>
+                    </div>
+                    <p>Typographic Design: Form and Communication</p>
+                    <a href="#">
+                        <button class="home-btn">Read</button>
+                    </a>
+                </div>
             </div>
-            <p>{props.bookname}</p>
-            <a href={props.link}>
-                <button class="home-btn">Read</button>
-            </a>
         </div>
     );
 }

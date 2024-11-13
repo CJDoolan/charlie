@@ -3,7 +3,9 @@
   "private": true,
   "workspaces": [
     "home",
-    "reader"
+    "reader",
+    "startread",
+    "booklog"
   ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -18,13 +20,17 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "start:booklog": "npm start --workspace=booklog",
     "start:home": "npm start --workspace=home",
     "start:reader": "npm start --workspace=reader",
+    "start:startread": "npm start --workspace=startread",
+    "build:booklog": "npm run build --workspace=booklog",
     "build:home": "npm run build --workspace=home",
     "build:reader": "npm run build --workspace=reader",
+    "build:startread": "npm run build --workspace=startread",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:all": "concurrently \"npm start --workspace=home\" \"npm start --workspace=reader\""
+    "start:all": "concurrently \"npm start --workspace=booklog\" \"npm start --workspace=home\" \"npm start --workspace=reader\" \"npm start --workspace=startread\""
   },
   "eslintConfig": {
     "extends": [
