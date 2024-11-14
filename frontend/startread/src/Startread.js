@@ -47,7 +47,7 @@ function MainContainer() {
         const rect = container.getBoundingClientRect();
         const offsetX = event.clientX - rect.left;
         const width = rect.width;
-        return Math.min(120, Math.max(0, (offsetX / width) * 120));
+        return Math.min(120, Math.max(0, (offsetX / width) * 120) + 5);
     };
 
     // Function to handle click events on the progress container
