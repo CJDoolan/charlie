@@ -1,41 +1,6 @@
-/*
-container splits items down the middle into columns
-*/
-.container {
-    display: grid;
-    grid-template-columns: 6fr 7fr;
-    gap: 120px;
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
-/* Left side:
-Contain mascot container and the title. no other elements
-*/
-/*
-TODO: Edit mascot container to contain actual 3d mascot
-*/
-.left-side {
-    text-align: center;
-}
-.body_title {
-    font-size: 35px;
-    font-weight: 600;
-    color: #252E2C;
-    margin-bottom: 20px;
-}
-.mascot-container {
-    /* background-color: #EAFFFC;
-    height: 75%; */
-    border-radius: 20px;
-    background-color: #F5F8F5;
-    margin: 0 30px;
-    border: 2px solid #E9E9E9;
-    box-shadow: 0 2px 20px -12px #B9B9B9, 0 2px 0 0 #D9D9D9;
-}
-.mascot-container img {
-    width: 100%;
-    border-radius: 20px;
+.container {    
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 /* Right side:
@@ -51,12 +16,8 @@ Jump back in:
     Add backend to show the 2 recent books the user has read (idk how)
         Change image to pdf for the recent books
 */
-.right-side {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
 .new-reading {
+    margin-top: 10vh;
     background-color: white;
     padding: 20px;
     border: 2px solid #E9E9E9;
@@ -65,46 +26,90 @@ Jump back in:
     text-align: center;
     display: flex;
     flex-direction: column;
+    display: grid;
+    grid-template-columns: 6fr 7fr;
+    gap: 32px;
+}
+.left-side .home-btn {
+    margin-bottom: 50px;
+}
+.new-reading h4 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #252E2C;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+.new-reading div {
+    text-align: center;
     align-items: center;
+}
+.pdf-thumbnail-holder {
+    width: 220px;
+    margin: 0 auto;
+    border-color: #ddd;
+    border-width: 1px;
+    border-style: solid;
 }
 .new-reading p {
     font-size: 18px;
     color: #000000;
+    margin-top: 5px;
+    margin-bottom: 0;
 }
-.new-reading svg {
-    overflow: visible;
+#pageNumber {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 20px;
 }
-.upload-icon {
-    width: 50px;
-    margin-bottom: 10px;
+  
+.timer-timeDisplay p {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 25px;
 }
-.new-reading .home-btn {
+.timer-timeDisplay span {
+    font-size: 24px;
+    font-weight: 600;
+    color: #252E2C;
+}
+.timer-progressContainer {
+    height: 30px;
+    background-color: #e0e0e0;
+    border-radius: 100000px;
+    overflow: hidden;
+    margin: 0 40px;
+    box-shadow: 0 8px 20px -8px #828282;
+}
+.timer-progressBar {
+    height: 100%;
+    background: linear-gradient(45deg, #FFCC4D, #ff9800);
+    border-radius: 100000px;
+}
+.right-side {
+    position: relative;
+}
+.right-side .home-btn {
     padding: 3px 60px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
-
-.jump-back-in {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-}
-.book-card {
+.timer-input {
+    background: none;
+    outline: none;
+    border: none;
+    font-family: inherit;
+    font-size: 24px;
     text-align: center;
-    background-color: #EAFFFC;
-    border: 2px solid #E9E9E9;
-    border-radius: 20px;
-    box-shadow: 0 2px 20px -12px #B9B9B9, 0 2px 0 0 #D9D9D9;
-    padding: 16px 30px;
+    font-weight: 600;
+    color: #252E2C;
+    width: auto;
+    display: inline-block;
+    resize: none;
+    margin-bottom: 24px;
 }
-.pdf-thumbnail-holder {
-    width: 140px;
-    margin: 0 auto;
-}
-.book-card p {
-    margin: 12px 0;
-    color: #2b6777;
-    font-style: italic;
-    font-size: 18px;
-}
-.book-card .home-btn {
-    padding: 3px 40px;
+.timer-input:focus {
+    background: none;
+    outline: none;
 }

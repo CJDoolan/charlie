@@ -200,6 +200,7 @@ function Notes({ pageNumber }) {
                                 onKeyDown={(e) => handleKeyDownEdit(e, index)}
                                 onBlur={handleBlur}
                                 className="edit-input"
+                                autoFocus
                             />
                         ) : (
                             <div onClick={() => startEditing(index)}>
