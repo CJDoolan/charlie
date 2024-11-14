@@ -132,6 +132,9 @@ function Upload() {
                     </svg>
                     <p id="fileNameDisplay" style={{ display: 'block' }}>{fileName}</p>
                     <a href="#">
+                        {
+                            // this will take you to the start reading page for the newly uploaded book
+                        }
                         <button class="home-btn" id="fileReadingButton" style={{ display: 'block' }}>Start reading</button>
                     </a>
                 </> )}
@@ -165,6 +168,9 @@ function Bookpreview(props) {
             </div>
             <p>{props.bookname}</p>
             <a href={props.link}>
+                {
+                    // this will take you to the start reading page for the respective book
+                }
                 <button class="home-btn">Read</button>
             </a>
         </div>

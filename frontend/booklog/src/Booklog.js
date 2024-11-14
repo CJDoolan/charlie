@@ -103,6 +103,9 @@ function Bookdisplay(props) {
             </div>
             <p>{props.bookname}</p>
             <a href={props.link}>
+                {
+                    // this will take you to the start reading page for the respective book
+                }
                 <button className="home-btn">Read</button>
             </a>
         </div>

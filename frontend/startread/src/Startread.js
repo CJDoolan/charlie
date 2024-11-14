@@ -103,6 +103,9 @@ function MainContainer() {
                     <p>Sample book name goes here</p>
                     <p id="pageNumber">Page {pageNum}</p>
                     <a href="#">
+                        {
+                            // this will take you to the book log
+                        }
                         <button className="home-btn">Select different book</button>
                     </a>
                 </div>
@@ -144,6 +147,9 @@ function MainContainer() {
                         </div>
                     </div>
                     <a href="#">
+                        {
+                            // this will take you to the reader
+                        }
                         <button className="home-btn">Start reading</button>
                     </a>
                 </div>
