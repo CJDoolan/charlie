@@ -1,0 +1,63 @@
+.container {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+/* Right side:
+New reading:
+    Users can upload new books to read
+    After book is uploaded lets user go to the start reading page
+Jump back in:
+    Displays first page of the pdfs of the books the user has last read
+    Lets user go to start reading with button
+*/
+/* TODO: 
+    add backend slop to file upload
+    Add backend to show the 2 recent books the user has read (idk how)
+        Change image to pdf for the recent books
+*/
+.form-div h3 {
+    font-size: 35px;
+    font-weight: 600;
+    color: #252E2C;
+    margin: 20px 0 5px 0;
+}
+#searchBar {
+    width: 100%;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    resize: none;
+    box-shadow: 0 8px 40px -20px #919191;
+    margin-bottom: 30px;
+}
+
+.display-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 32px;
+}
+.book-card {
+    text-align: center;
+    background-color: #EAFFFC;
+    border: 2px solid #E9E9E9;
+    border-radius: 20px;
+    box-shadow: 0 2px 20px -12px #B9B9B9, 0 2px 0 0 #D9D9D9;
+    padding: 16px 30px;
+}
+.pdf-thumbnail-holder {
+    width: 140px;
+    margin: 0 auto;
+}
+.book-card p {
+    margin: 12px 0;
+    color: #2b6777;
+    font-style: italic;
+    font-size: 18px;
+}
+.book-card .home-btn {
+    padding: 3px 40px;
+}
