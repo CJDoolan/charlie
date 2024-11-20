@@ -43,9 +43,9 @@ function Mascot() {
             <h3 class="body_title">Welcome back, {name}</h3>
             <div class="mascot-container">
             <Canvas>
-                <ambientLight intensity={Math.PI / 3} />
-                <directionalLight position={[10, 10, 10]} angle={0.15} penumbra={1.3} decay={0.15} intensity={Math.PI / 2} />
-                <pointLight position={[-10, -10, -10]} decay={0.6} intensity={Math.PI} />
+                <ambientLight intensity={Math.PI / 3} color={'#FFFFFF'}/>
+                <directionalLight position={[10, 10, 10]} angle={0.15} penumbra={1.3} decay={0.15} intensity={Math.PI / 2} color={'#FFFFFF'}/>
+                <pointLight position={[-10, -10, -10]} decay={0.6} intensity={Math.PI} color={'#FFFFFF'}/>
                 <OrbitControls enablePan={false} />
 
                 <Critter/>

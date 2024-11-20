@@ -61,3 +61,35 @@ Jump back in:
 .book-card .home-btn {
     padding: 3px 40px;
 }
+
+@media (max-width: 1200px) {
+    .display-container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .display-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .display-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .form-div h3 {
+        font-size: 28px;
+    }
+
+    #searchBar {
+        font-size: 14px;
+    }
+}

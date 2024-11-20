@@ -1,5 +1,6 @@
 /*
 container splits items down the middle into columns
+make responsive later
 */
 .container {
     display: grid;
@@ -45,6 +46,12 @@ Contains pdf display
     margin: 0 auto;
     overflow-y: scroll;
     height: 80vh;
+}
+@media screen and (max-width: 1024px) {
+    .pdf-display {
+        width: 90%; 
+        margin: 0 auto; 
+    }
 }
 .pdf-display::-webkit-scrollbar {
     width: 5px;

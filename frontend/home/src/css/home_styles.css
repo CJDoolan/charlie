@@ -5,8 +5,8 @@ container splits items down the middle into columns
     display: grid;
     grid-template-columns: 6fr 7fr;
     gap: 120px;
-    margin-left: 15%;
-    margin-right: 15%;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 /* Left side:
@@ -108,4 +108,49 @@ Jump back in:
 }
 .book-card .home-btn {
     padding: 3px 40px;
+}
+
+@media screen and (min-width: 1921px) {
+    .container {
+        max-width: 1400px;
+        gap: 150px;
+    }
+}
+
+/* For screens smaller than 1366px (medium screens) */
+@media screen and (max-width: 1366px) {
+    .container {
+        grid-template-columns: 1fr; /* Stacks columns vertically */
+        gap: 60px;
+    }
+
+    .right-side {
+        margin-top: 40px; /* Adds space between left and right sides */
+    }
+
+    .left-side, .right-side {
+        margin: 0 auto; /* Centers the sections */
+    }
+}
+
+/* For screens smaller than 1024px (small screens) */
+@media screen and (max-width: 1024px) {
+
+    .body_title {
+        font-size: 28px; /* Adjusts title size */
+    }
+
+    .mascot-container {
+        height: auto; /* Allows mascot container to resize dynamically */
+        margin: 0 auto; /* Centers the mascot */
+    }
+
+    .jump-back-in {
+        grid-template-columns: 1fr; /* Stacks book cards */
+    }
+
+    .book-card {
+        margin: 0 auto; /* Centers book cards */
+        max-width: 300px;
+    }
 }

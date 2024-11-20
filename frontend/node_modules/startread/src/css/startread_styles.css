@@ -113,3 +113,22 @@ Jump back in:
     background: none;
     outline: none;
 }
+
+@media (max-width: 1200px) {
+    .new-reading {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 940px) {
+    .new-reading {
+        grid-template-columns: 1fr;
+    }
+    .container {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .timer-container {
+        margin-bottom: 80px;
+    }
+}

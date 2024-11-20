@@ -1,3 +1,4 @@
+// make responsive later
 import './css/reader_styles.css';
 import './css/AnnotationLayer.css'
 import './css/TextLayer.css'
@@ -53,7 +54,9 @@ export default function Reader() {
                         onLoadError={onLoadError}
                         onSourceError={onSourceError} 
                     >
-                        <Page pageNumber={pageNumber}/>
+                        <Page 
+                            pageNumber={pageNumber}
+                        />
                     </Document>
                 </div>
             </div>
