@@ -42,11 +42,11 @@ function Mascot() {
         <div class="left-side">
             <h3 class="body_title">Welcome back, {name}</h3>
             <div class="mascot-container">
-            <Canvas>
+            <Canvas camera={{ position: [0, 0, 10] }}>
                 <ambientLight intensity={Math.PI / 3} color={'#FFFFFF'}/>
                 <directionalLight position={[10, 10, 10]} angle={0.15} penumbra={1.3} decay={0.15} intensity={Math.PI / 2} color={'#FFFFFF'}/>
                 <pointLight position={[-10, -10, -10]} decay={0.6} intensity={Math.PI} color={'#FFFFFF'}/>
-                <OrbitControls enablePan={false} />
+                <OrbitControls enablePan={false} minDistance={5} maxDistance={20}/>
 
                 <Critter/>
             </Canvas>
@@ -56,7 +56,7 @@ function Mascot() {
 }
 
 function Critter() {
-    const { scene, animations } = useGLTF(`${process.env.PUBLIC_URL}/imgtemp/wiggleBookworm.glb`);
+    const { scene, animations } = useGLTF(`${process.env.PUBLIC_URL}/imgtemp/peepeepoopoo.glb`);
     const modelRef = useRef();
     const { actions, names } = useAnimations(animations, modelRef);
 
@@ -66,14 +66,14 @@ function Critter() {
         }
     }, [actions, names]);
 
-    useFrame((_, delta) => {
-        if (modelRef.current) {
-            modelRef.current.rotation.y += delta * 0.1;
-        }
-    });
-
     return (
-        <primitive ref={modelRef} object={scene} scale={[1, 1, 1]} />
+        <primitive 
+            ref={modelRef} 
+            object={scene} 
+            scale={[1, 1, 1]} 
+            rotation={[0, -Math.PI / 2, 0]}
+            position={[0, -2, 0]}
+        />
     );
 }
 
