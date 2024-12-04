@@ -29,6 +29,18 @@ svg {
     border-radius: 1000000px;
     transition: 0.2s;
 }
+.timer-btn {
+    padding: 3px 10px;
+    color: #47837A;
+    font-size: 15px;
+    border-color: #47837A;
+    border-width: 2px;
+    border-style: solid;
+    text-decoration: none;
+    border-radius: 1000000px;
+    transition: 0.2s;
+    margin-top: 15px
+}
        /* #navbar {
             display: flex;
             justify-content: left;
@@ -156,31 +168,46 @@ svg {
 
      <nav class="navbar">
         <div class="navbar-left">
-            <a class="navbar-brand" href="home.html">Book<span class="brand-color-shift">worm</span></a>
-            <a href="startReading.html" class="nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 -5.5 24 24"><path fill="#47837A" d="M6.75 22q-1.125 0-1.937-.763T4 19.35V5.4q0-.95.588-1.7t1.537-.95l7.5-1.475q.925-.2 1.65.4T16 3.225V15.15q0 .725-.45 1.288t-1.15.687L6.525 18.7q-.225.05-.375.238T6 19.35q0 .275.225.463T6.75 20H18V5q0-.425.288-.712T19 4t.713.288T20 5v15q0 .825-.587 1.413T18 22zm1.45-5.65q.35-.075.575-.35T9 15.375V5.45q0-.475-.363-.775t-.837-.2q-.35.075-.575.35T7 5.45v9.925q0 .475.362.775t.838.2"/></svg>
-                Start Reading
-            </a>
-            <a href="bookLog.html" class="nav-link">
+            <a class="navbar-brand" href="/home">Book<span class="brand-color-shift">worm</span></a>
+          
+            <a href="/bookLog" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.4em" height="1.4em" viewBox="1 -5.5 24 24"><path fill="#47837A" d="M5 21q-.825 0-1.412-.587T3 19V6.525q0-.35.113-.675t.337-.6L4.7 3.725q.275-.35.687-.538T6.25 3h11.5q.45 0 .863.188t.687.537l1.25 1.525q.225.275.338.6t.112.675V19q0 .825-.587 1.413T19 21zm.4-15h13.2l-.85-1H6.25zM16 8H8v8l4-2l4 2z"/></svg>
                 Book Log
             </a>
         </div>
-        <div class="navbar-right">
+        <!-- <div class="navbar-right">
             <span class="coins">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.4em" height="1.4em" viewBox="3 -6 24 24"><path fill="#FFCC4D" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M12 6a1 1 0 0 0-1 1a3 3 0 1 0 0 6v2a1.02 1.02 0 0 1-.866-.398l-.068-.101a1 1 0 0 0-1.732.998a3 3 0 0 0 2.505 1.5H11a1 1 0 0 0 .883.994L12 18a1 1 0 0 0 1-1l.176-.005A3 3 0 0 0 13 11V9c.358-.012.671.14.866.398l.068.101a1 1 0 0 0 1.732-.998A3 3 0 0 0 13.161 7H13a1 1 0 0 0-1-1m1 7a1 1 0 0 1 0 2zm-2-4v2a1 1 0 0 1 0-2"/></svg>
                 2,300
             </span>
             <button href="#" class="home-btn">Shop</button>
-        </div>
+        </div> -->
     </nav>
 
     <div class="mainSection">
-        <iframe class="pdf-frame" src="examplePDF.pdf"></iframe>
+        <iframe class="pdf-frame" id="pdfViewer" src=""></iframe>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const iframe = document.getElementById('pdfViewer'); // Select the iframe
+                const params = new URLSearchParams(window.location.search); // Parse query parameters
+                const title = params.get('title'); // Get the 'title' parameter
+
+                if (title) {
+                    // Construct the path to the PDF file
+                    const pdfPath = `../backend/uploads/${encodeURIComponent(title)}`;
+                    // Set the iframe src to the constructed path
+                    iframe.src = pdfPath;
+                } else {
+                    // Handle cases where the title parameter is missing
+                    iframe.src = ''; // Optionally load a default file or show an error
+                    console.error('No title parameter provided in the URL.');
+                }
+            });
+        </script>
         <div class="rightSection">
             <div class="timer-container">
                 <!-- Countdown Timer Display -->
-                <div class="timer-display" id="timer">1:00:00</div>
+                <div class="timer-display" id="timer">00:00</div>
 
                 <!-- Progress Bar -->
                 <div class="progress" style="height: 30px;">
@@ -188,6 +215,11 @@ svg {
                          id="progressBar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
                         100%
                     </div>
+                </div>
+
+                 <div>
+                    <button id="pauseBtn" class="timer-btn">Pause</button>
+                    <button id="resumeBtn" class="timer-btn" style="display: none;">Resume</button>
                 </div>
             </div>
 
@@ -199,20 +231,37 @@ svg {
         </div>
     </div>
 
+    <!-- Pause and Resume Buttons -->
+
+
+
     <!-- JavaScript for Timer Logic -->
-    <script>
-        const totalTime = 3600;
-        let timeLeft = totalTime;
+   <script>
+    let isPaused = false;
+    let countdown;
 
-        const timerElement = document.getElementById('timer');
-        const progressBar = document.getElementById('progressBar');
+   // Retrieve the saved reading time from sessionStorage
+const readingTime = sessionStorage.getItem('reading_time');  // This gets the value as a string
 
-        const countdown = setInterval(() => {
-            const hours = Math.floor(timeLeft / 3600);
-            const minutes = Math.floor((timeLeft % 3600) / 60);
+// Convert it to a number (in case it's a string) and then multiply by 60 for seconds
+const totalTime = readingTime ? parseInt(readingTime) * 60 : 60;  // Default to 60 seconds if not available
+let timeLeft = totalTime;  // Time left to count down
+
+console.log('Total time in seconds:', timeLeft);  // This will print the total time as a number
+
+    const timerElement = document.getElementById('timer');
+    const progressBar = document.getElementById('progressBar');
+
+    // Function to start the countdown
+    function startCountdown() {
+        countdown = setInterval(() => {
+            if (isPaused) return;  // If paused, don't count down
+            
+            const minutes = Math.floor(timeLeft / 60);  // Only minutes for a 1-minute timer
             const seconds = timeLeft % 60;
 
-            timerElement.textContent = `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
             const progressPercent = (timeLeft / totalTime) * 100;
             progressBar.style.width = `${progressPercent}%`;
             progressBar.textContent = `${Math.round(progressPercent)}%`;
@@ -224,8 +273,30 @@ svg {
                 timerElement.textContent = "Time's up!";
                 progressBar.style.width = '0%';
                 progressBar.textContent = '0%';
+                // Redirect to quiz.html when time is up
+                window.location.href = "quiz.html";
             }
         }, 1000);
+    }
+
+    // Start the countdown when the page loads
+    startCountdown();
+
+    // Pause Button Event Listener
+    document.getElementById("pauseBtn").addEventListener("click", function() {
+        isPaused = true;  // Pause the countdown
+        document.getElementById("pauseBtn").style.display = "none";  // Hide Pause button
+        document.getElementById("resumeBtn").style.display = "inline-block";  // Show Resume button
+    });
+
+    // Resume Button Event Listener
+    document.getElementById("resumeBtn").addEventListener("click", function() {
+        isPaused = false;  // Resume the countdown
+        document.getElementById("resumeBtn").style.display = "none";  // Hide Resume button
+        document.getElementById("pauseBtn").style.display = "inline-block";  // Show Pause button
+    });
+</script>
+
     </script>
 
     <script>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<head>
+    <title>Sign up page</title>
+    <style>
+        body{background: #FFF;width: 1440px;
+            height: 1024px;
+        }
+        
+        .container{
+            margin:0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .black-text{color: var(--Black, #252E2C);font-family: "General Sans";font-size: 30px;font-style: normal;font-weight: 600;line-height: normal;}
+        .green-text{color: var(--Bold-Mint, #47837A);
+            font-family: "General Sans";
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;}
+        
+        h1{text-align: center;
+            color: #000;
+            font-family: "General Sans";
+            font-size: 48px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;}
+        
+        input {
+            width: 400px; 
+            height: 50px;
+            border-radius: 26px;
+            border: 2px solid var(--Bold-Mint, #47837A);
+            background: #FFF;
+            box-shadow: 3px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            padding: 10px; 
+            font-size: 16px;
+        }
+        
+        .form-group{margin-bottom: 20px;}
+        .signup-btn{width: 400px; height: 50px; border-radius: 26px; background: var(--Bold-Mint, #47837A); box-shadow: 3px 4px 4px 0px #47837A; color:#FFF; font-family: "General Sans";}
+        .alt{margin-top: 30px;}
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <span class="black-text">Book</span><span class="green-text">worm</span>
+    </div>
+    <div class="container">
+        <h1>Create your profile</h1>
+
+        <form action="/submit-signup" method="POST" class="signup-form">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Name" required>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+
+            <button type="submit" class="signup-btn">Create Account</button>
+        </form>
+
+        <div class="alt">
+            <span class="black-text">Have an account?</span><span class="green-text" onclick="window.location.href='/login'">Log in</span>
+        </div>
+    </div>
+</body>
+</html>
+

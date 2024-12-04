@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookworm</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+        /* Main container */
+        .container2 {
+            margin-left: 10%;
+            margin-right: 10%;
+            padding-top: 30px; /* Added padding to ensure space from the top */
+        }
+
+        /* Grid container for book cards */
+        .jump-back-in {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid columns */
+            gap: 32px; /* Space between the cards */
+            margin-top: 30px;
+        }
+
+        /* Styling for each book card */
+        .book-card {
+            background-color: #FFF;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            overflow: hidden;
+            min-width: 250px; /* Ensuring each card has at least 250px */
+        }
+
+        .book-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .book-card p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 16px;
+        }
+
+        .home-btn {
+            padding: 10px 20px;
+            background-color: #47837A;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .home-btn:hover {
+            background-color: #3b6a64;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a class="navbar-brand" href="/home">Book<span class="brand-color-shift">worm</span></a>
+            <a href="#" class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.4em" height="1.4em" viewBox="1 -5.5 24 24">
+                    <path fill="#47837A" d="M5 21q-.825 0-1.412-.587T3 19V6.525q0-.35.113-.675t.337-.6L4.7 3.725q.275-.35.687-.538T6.25 3h11.5q.45 0 .863.188t.687.537l1.25 1.525q.225.275.338.6t.112.675V19q0 .825-.587 1.413T19 21zm.4-15h13.2l-.85-1H6.25zM16 8H8v8l4-2l4 2z" />
+                </svg>
+                Book Log
+            </a>
+        </div>
+    </nav>
+
+    <div class="container2">
+        <h3 class="body_title">Jump back in</h3>
+        <div class="jump-back-in" id="dynamicBookCards">
+            <!-- Book cards will be added here -->
+            
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Try to fetch the data dynamically
+            fetch('/api/get-uploads')
+                .then(response => response.json())
+                .then(files => {
+                    const container = document.getElementById('dynamicBookCards');
+
+                    files.forEach(file => {
+                        // Create book card elements
+                        const card = document.createElement('div');
+                        card.className = 'book-card';
+
+                        const thumbnail = document.createElement('img');
+                        thumbnail.src = 'pdf.png'; // Example thumbnail image
+                        
+                        const title = document.createElement('p');
+                        title.textContent = file; // Assuming `file` is the book title
+
+                        const readButton = document.createElement('a');
+                        readButton.href = `/startReading?title=${encodeURIComponent(file)}`;
+                        readButton.innerHTML = '<button class="home-btn">Read</button>';
+
+                        // Append elements to the card
+                        card.appendChild(thumbnail);
+                        card.appendChild(title);
+                        card.appendChild(readButton);
+
+                        // Append the card to the container
+                        container.appendChild(card);
+                    });
+                })
+                .catch(err => {
+                    console.error('Error fetching uploaded files:', err);
+                });
+        });
+    </script>
+
+</body>
+
+</html>

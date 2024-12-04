@@ -42,6 +42,9 @@
 
 .form-group{margin-bottom: 20px;}
 
+
+       
+
     .login-btn{width: 400px;
 height: 50px;
 
@@ -56,26 +59,58 @@ font-family: "General Sans";}
 </head>
 
 <body>
-    <div class="header" onclick="window.location.href='index.html'">
+    <div class="header" >
     <span class="black-text">Book</span><span class="green-text">worm</span>
     </div>
 
     <div class="container">
         <h1>Log in</h1>
-        <form action="/login-login" method="POST" class="login-form">
+        <form action="/submit-login" method="POST" class="login-form">
+           
+
             <div class="form-group">
-                <input type="email" id="email" name="email" placeholder="Email"required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
             </div>
-    
+
             <div class="form-group">
-                <input type="password" id="password" name="password" placeholder="Password"required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
             </div>
-    
-        <button type="submit" class="login-btn" onclick="window.location.href='home.html'"> Log In</button>
+
+            <button type="submit" class="login-btn">login</button>
         </form>
+
         <div class="alt">
-        <span class="black-text">Don't have an account?</span><span class="green-text" onclick="window.location.href='signup.html'">Sign Up</span>
+            <span class="black-text">Don't have an account?</span><span class="green-text" onclick="window.location.href='/signup'">Sign Up</span>
         </div>
-        </div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent the default form submission behavior
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert('Login successful');
+                    window.location.href = '/home'; // Redirect to the home page
+                } else {
+                    alert(data.error || 'Login failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while trying to log in');
+            }
+        });
+    </script>
 </body>
 </html>

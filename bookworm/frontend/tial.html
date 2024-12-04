@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <style>
+        #dropArea {
+            border: 2px dashed #47837A;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            margin: auto;
+        }
+
+        #dropArea.dragover {
+            background-color: #e6f7f3;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        #confirmationSymbol,
+        #fileNameDisplay,
+        #fileReadingButton {
+            display: none;
+        }
+    </style>
+    <script>
+        function dragOverHandler(event) {
+            event.preventDefault();
+            document.getElementById('dropArea').classList.add('dragover');
+        }
+
+        function dragLeaveHandler(event) {
+            document.getElementById('dropArea').classList.remove('dragover');
+        }
+
+        function dropHandler(event) {
+            event.preventDefault();
+            document.getElementById('dropArea').classList.remove('dragover');
+
+            // Get the dropped files
+            const files = event.dataTransfer.files;
+
+            if (files.length > 0) {
+                const fileInput = document.getElementById('fileInput');
+                fileInput.files = files; // Assign dropped files to the input
+                document.getElementById('uploadForm').submit();
+            }
+        }
+
+        function fileChangeHandler(event) {
+            document.getElementById('uploadForm').submit();
+        }
+    </script>
+</head>
+<body>
+    <div 
+        id="dropArea" 
+        ondrop="dropHandler(event);" 
+        ondragover="dragOverHandler(event);" 
+        ondragleave="dragLeaveHandler(event);">
+        <svg id="uploadSymbol" xmlns="http://www.w3.org/2000/svg" width="7em" height="7em" viewBox="0 0 24 24">
+            <path fill="#47837A" d="M11 14.825V18q0 .425.288.713T12 19t.713-.288T13 18v-3.175l.9.9q.15.15.338.225t.375.063t.362-.088t.325-.225q.275-.3.288-.7t-.288-.7l-2.6-2.6q-.15-.15-.325-.212T12 11.425t-.375.063t-.325.212l-2.6 2.6q-.3.3-.287.7t.312.7q.3.275.7.288t.7-.288zM6 22q-.825 0-1.412-.587T4 20V4q0-.825.588-1.412T6 2h7.175q.4 0 .763.15t.637.425l4.85 4.85q.275.275.425.638t.15.762V20q0 .825-.587 1.413T18 22zm7-14q0 .425.288.713T14 9h4l-5-5z"/>
+        </svg>
+        <p id="uploadText">Drop PDF files here or</p>
+        <button class="home-btn" id="uploadButton" onclick="document.getElementById('fileInput').click()">Browse files</button>
+    </div>
+
+    <!-- Hidden form for file upload -->
+    <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" id="fileInput" name="file" accept="application/pdf" onchange="fileChangeHandler(event)">
+    </form>
+
+    <!-- Additional elements for confirmation -->
+    <svg id="confirmationSymbol" xmlns="http://www.w3.org/2000/svg" width="7em" height="7em" viewBox="0 0 24 24">
+        <path fill="#47837A" d="M10 10.5h1q.425 0 .713-.288T12 9.5v-1q0-.425-.288-.712T11 7.5H9.5q-.2 0-.35.15T9 8v4q0 .2.15.35t.35.15t.35-.15T10 12zm0-1v-1h1v1zm5 3q.425 0 .713-.288T16 11.5v-3q0-.425-.288-.712T15 7.5h-1.5q-.2 0-.35.15T13 8v4q0 .2.15.35t.35.15zm-1-1v-3h1v3zm4-1h.5q.2 0 .35-.15T19 10t-.15-.35t-.35-.15H18v-1h.5q.2 0 .35-.15T19 8t-.15-.35t-.35-.15h-1q-.2 0-.35.15T17 8v4q0 .2.15.35t.35.15t.35-.15T18 12zM8 18q-.825 0-1.412-.587T6 16V4q0-.825.588-1.412T8 2h12q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm-4 4q-.825 0-1.412-.587T2 20V7q0-.425.288-.712T3 6t.713.288T4 7v13h13q.425 0 .713.288T18 21t-.288.713T17 22z"/>
+    </svg>
+    <p id="fileNameDisplay">File name</p>
+    <a href="startReading.html"><button class="home-btn" id="fileReadingButton">Start reading</button></a>
+</body>
+</html>
