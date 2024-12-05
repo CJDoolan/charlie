@@ -1,9 +1,0 @@
-add app.py file to backend base directory to handle backend entry
-
-routes folder should contain package that handles routing to all the react pages
-
-templates will contain all the html for all the non react pages
-
-static folder can hold css and javascript files for the template files to access. Can also contain images if we need them
-
-static/bundle contains bundled react files
