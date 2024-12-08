@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            background: #FFF;
+            max-width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            font-family: "General Sans", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .black-text {
+            color: var(--Black, #252E2C);
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .green-text {
+            color: var(--Bold-Mint, #47837A);
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .header {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        #mainContent {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            width: 90%; /* Responsive width */
+            max-width: 1200px;
+        }
+
+        #slogan {
+            max-width: 600px; /* Limit slogan width */
+            margin: 10px 0;
+            color: var(--Black, #252E2C);
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .signup-btn, .login-btn {
+            display: flex;
+            width: 200px;
+            height: 50px;
+            padding: 5px 25px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            border-radius: 26px;
+            font-family: "General Sans", sans-serif;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .signup-btn {
+            border: 2px solid var(--Bold-Mint, #47837A);
+            background: var(--Bold-Mint, #47837A);
+            box-shadow: 3px 5px 4px 0px #47837A;
+            color: #FFF;
+        }
+
+        .login-btn {
+            border: 2px solid var(--Bold-Mint, #47837A);
+            background: #FFF;
+            box-shadow: 3px 4px 6px 0px #6D7170;
+            color: #47837A;
+        }
+
+        .mascot {
+            width: 100%;
+            max-width: 350px; /* Responsive mascot */
+            height: auto;
+            margin: 20px auto;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 1024px) {
+            #slogan {
+                font-size: 1.5rem;
+            }
+
+            .signup-btn, .login-btn {
+                width: 180px;
+                height: 45px;
+                font-size: 1rem;
+            }
+
+            .mascot {
+                max-width: 300px;
+                margin-top: 10px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            #mainContent {
+                padding: 10px;
+            }
+
+            #slogan {
+                font-size: 1.25rem;
+            }
+
+            .signup-btn, .login-btn {
+                width: 150px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+
+            .header .black-text, .header .green-text {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span class="black-text">Book</span><span class="green-text">worm</span>
+    </div>
+
+    <div id="mainContent">
+        <div id="slogan">
+            <p>Make reading simple, and learning endless!</p>
+        </div>
+
+        <div class="signup-btn" onclick="window.location.href='signup.html'">Sign Up</div>
+        <div class="login-btn" onclick="window.location.href='login.html'">Login</div>
+    </div>
+
+    <img src="mascot.png" alt="Mascot" class="mascot">
+</body>
+</html>
